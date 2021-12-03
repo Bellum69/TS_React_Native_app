@@ -7,12 +7,12 @@ import {
   Alert,
 } from "react-native";
 import { useDispatch } from "react-redux";
-import { mainSlice } from "../store/reducers/mainSlice";
+import { newsSlice } from "../store/reducers/newsSlice";
 import { s } from "../styles";
 
 export const PostScreen = ({ route }) => {
   const { postId } = route.params;
-  const { deletePost } = mainSlice.actions;
+  const { deletePost } = newsSlice.actions;
 
   const dispatch = useDispatch();
 

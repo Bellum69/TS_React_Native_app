@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { IMainState } from "../../types";
+import { INewsState } from "../../types";
 const setData = async (value: any, key: string) => {
   try {
     await AsyncStorage.setItem(key, JSON.stringify(value));
@@ -18,13 +18,13 @@ const getData = async (key: string) => {
   }
 };
 
-const initialState: IMainState = {
-  //  allPosts: getData("allPosts") || [],
+const initialState: INewsState = {
   allPosts: [],
-  isAdmin: false,
+  allComments: [],
+  allUsers: [],
 };
 
-export const mainSlice = createSlice({
+export const newsSlice = createSlice({
   name: "main",
   initialState,
   reducers: {
@@ -32,28 +32,17 @@ export const mainSlice = createSlice({
       state.allPosts = action.payload;
       setData(action.payload, "allPosts");
     },
-    userSignification(state) {
-      state.isAdmin = !state.isAdmin;
-    },
     deletePost(state, action) {
       state.allPosts = state.allPosts.filter(
         (post) => post.id !== action.payload
       );
       setData(state.allPosts, "allPosts");
     },
-    /*
     addPost(state, action) {
-      state.allPosts.push(action);
+      state.allPosts.push(action.payload);
       setData(state.allPosts, "allPosts");
     },
-    deletePost(state, action) {
-      state.allPosts = state.allPosts.filter(
-        (post) => post.id !== action.payload
-      );
-      setData(state.allPosts, "allPosts");
-    },
-    */
   },
 });
 
-export default mainSlice.reducer;
+export default newsSlice.reducer;

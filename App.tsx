@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { setupStore } from "./src/store";
 
 import { persistStore } from "redux-persist";
+import { AppNavigation } from "./src/navigation/";
 
 const store = setupStore();
 

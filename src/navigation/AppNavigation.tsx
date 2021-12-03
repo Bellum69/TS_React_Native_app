@@ -8,6 +8,13 @@ import { faHome, faCode, faBullhorn } from "@fortawesome/free-solid-svg-icons";
 //
 
 import names from "./names";
+import {
+  MainStack,
+  AboutStack,
+  CreateStack,
+  AuthorizeStack,
+  UserStack,
+} from "./stacks";
 
 //
 
@@ -30,7 +37,7 @@ export const AppNavigation = () => {
     >
       <Drawer.Screen
         name={names.Main}
-        component={TabStack}
+        component={MainStack}
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesomeIcon
@@ -42,7 +49,7 @@ export const AppNavigation = () => {
         }}
       />
       <Drawer.Screen
-        name={names.AboutUs}
+        name={names.AboutApp}
         component={AboutStack}
         options={{
           drawerIcon: ({ focused }) => (
@@ -57,6 +64,32 @@ export const AppNavigation = () => {
       <Drawer.Screen
         name={names.Create}
         component={CreateStack}
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesomeIcon
+              icon={faBullhorn}
+              size={30}
+              color={focused ? "white" : "black"}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name={names.Auth}
+        component={AuthorizeStack}
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesomeIcon
+              icon={faBullhorn}
+              size={30}
+              color={focused ? "white" : "black"}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name={names.User}
+        component={UserStack}
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesomeIcon

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, TextInput, Text, Pressable, Alert } from "react-native";
 import { useAppDispatch } from "../hooks/redux";
-import { mainSlice } from "../store/reducers/mainSlice";
+import { mainSlice } from "../store/reducers/newsSlice";
 import { s } from "../styles";
 
 interface IAuthorizeInputs {

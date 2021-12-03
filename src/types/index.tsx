@@ -4,6 +4,7 @@ export interface IComment {
   name: string;
   email: string;
   body: string;
+  date: Date;
 }
 
 export interface IPost {
@@ -11,6 +12,9 @@ export interface IPost {
   id: number;
   title: string;
   body: string;
+  views: number;
+  date: Date;
+  comments: IComment[];
 }
 
 export interface IUser {
@@ -18,9 +22,17 @@ export interface IUser {
   name: string;
   username: string;
   email: string;
+  createdPosts: IPost[];
+  createdComments: IComment[];
 }
 
-export interface IMainState {
+export interface INewsState {
   allPosts: IPost[];
+  allComments: IComment[];
+  allUsers: IUser[];
+}
+
+export interface IUserState {
+  user: IUser | null;
   isAdmin: boolean;
 }

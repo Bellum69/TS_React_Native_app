@@ -3,7 +3,11 @@ import { Pressable, View } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
 
-export const DrawerButton = ({ onPress }) => {
+interface IDrawerButtonProps {
+  onPress: () => void;
+}
+
+export const DrawerButton = ({ onPress }: IDrawerButtonProps) => {
   return (
     <Pressable onPress={onPress || {}} onLongPress={onPress || {}}>
       <View style={{ marginHorizontal: 15 }}>
