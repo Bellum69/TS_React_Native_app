@@ -16,7 +16,7 @@ export const MainStack = () => {
       initialRouteName={names.Main}
       screenOptions={{
         headerStyle: {
-          backgroundColor: "orange",
+          backgroundColor: "darkblue",
         },
         headerTintColor: "#fff",
       }}
@@ -37,7 +37,7 @@ export const MainStack = () => {
         name={names.Post}
         component={PostScreen}
         options={({ route }) => ({
-          title: route.params.postId,
+          title: route.params.postTitle,
           headerTitleAlign: "center",
         })}
       />

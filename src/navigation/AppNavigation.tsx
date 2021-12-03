@@ -4,7 +4,13 @@ import { DrawerMain } from "../components/DrawerMain";
 import { Dimensions } from "react-native";
 //
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faHome, faCode, faBullhorn } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHome,
+  faCode,
+  faBullhorn,
+  faUserAlt,
+  faKey,
+} from "@fortawesome/free-solid-svg-icons";
 //
 
 import names from "./names";
@@ -24,17 +30,31 @@ const Drawer = createDrawerNavigator();
 export const AppNavigation = () => {
   return (
     <Drawer.Navigator
+      initialRouteName={names.Main}
       drawerStyle={{
         width: width - 56,
       }}
       drawerContentOptions={{
         activeTintColor: "#fff",
-        activeBackgroundColor: "orange",
+        activeBackgroundColor: "darkblue",
         inactiveTintColor: "black",
         labelStyle: { fontSize: 24 },
       }}
       drawerContent={(props) => <DrawerMain {...props} />}
     >
+      <Drawer.Screen
+        name={names.User}
+        component={UserStack}
+        options={{
+          drawerIcon: ({ focused }) => (
+            <FontAwesomeIcon
+              icon={faUserAlt}
+              size={30}
+              color={focused ? "white" : "black"}
+            />
+          ),
+        }}
+      />
       <Drawer.Screen
         name={names.Main}
         component={MainStack}
@@ -80,20 +100,7 @@ export const AppNavigation = () => {
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesomeIcon
-              icon={faBullhorn}
-              size={30}
-              color={focused ? "white" : "black"}
-            />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name={names.User}
-        component={UserStack}
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesomeIcon
-              icon={faBullhorn}
+              icon={faKey}
               size={30}
               color={focused ? "white" : "black"}
             />

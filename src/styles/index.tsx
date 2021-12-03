@@ -7,7 +7,6 @@ export const s = StyleSheet.create({
     alignItems: "center",
   },
   wrapper: {
-    marginTop: 15,
     height: "100%",
     paddingBottom: 0,
   },
@@ -16,12 +15,13 @@ export const s = StyleSheet.create({
     alignSelf: "center",
     overflow: "hidden",
     width: "95%",
-    borderRadius: 25,
-    height: 40,
+    borderRadius: 15,
+    height: 80,
+    backgroundColor: "gray",
   },
   postName: {
     fontSize: 30,
-    alignSelf: "center",
+    marginLeft: 5,
   },
   postText: {
     marginLeft: 5,

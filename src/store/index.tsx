@@ -15,7 +15,7 @@ import userReducer from "./reducers/userSlice";
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  whitelist: ["mainReducer"],
+  whitelist: ["newsReducer"],
 };
 
 const rootReducer = combineReducers({
@@ -36,6 +36,8 @@ export const setupStore = () => {
       }),
   });
 };
+
+export const store = setupStore();
 
 export type RootState = ReturnType<typeof persistedReducer>;
 export type AppStore = ReturnType<typeof setupStore>;

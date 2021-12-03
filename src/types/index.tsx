@@ -14,7 +14,7 @@ export interface IPost {
   body: string;
   views: number;
   date: Date;
-  comments: IComment[];
+  comments: IComment[] | [];
 }
 
 export interface IUser {
@@ -22,17 +22,22 @@ export interface IUser {
   name: string;
   username: string;
   email: string;
-  createdPosts: IPost[];
-  createdComments: IComment[];
+  createdPosts: IPost[] | [];
+  createdComments: IComment[] | [];
 }
 
 export interface INewsState {
-  allPosts: IPost[];
-  allComments: IComment[];
-  allUsers: IUser[];
+  allPosts: Promise<IPost | undefined> | IPost[];
+  allComments: Promise<[]> | IComment[];
+  allUsers: Promise<[]> | IUser[];
 }
 
 export interface IUserState {
   user: IUser | null;
   isAdmin: boolean;
+}
+
+export interface IPostProps {
+  postData: IPost;
+  onOpen: (postData: IPost) => void;
 }

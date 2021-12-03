@@ -16,7 +16,7 @@ export const AboutStack = () => {
       initialRouteName={names.Main}
       screenOptions={{
         headerStyle: {
-          backgroundColor: "orange",
+          backgroundColor: "darkblue",
         },
         headerTintColor: "#fff",
       }}

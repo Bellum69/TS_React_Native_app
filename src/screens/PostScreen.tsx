@@ -1,20 +1,9 @@
 import React from "react";
-import {
-  View,
-  Text,
-  ImageBackground,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
-import { useDispatch } from "react-redux";
-import { newsSlice } from "../store/reducers/newsSlice";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { s } from "../styles";
 
 export const PostScreen = ({ route }) => {
-  const { postId } = route.params;
-  const { deletePost } = newsSlice.actions;
-
-  const dispatch = useDispatch();
+  const { postData } = route.params;
 
   const onDeletePost = () =>
     Alert.alert("Delete post alert", "Are you sure?", [
@@ -25,15 +14,15 @@ export const PostScreen = ({ route }) => {
       },
       {
         text: "YES",
-        onPress: () => dispatch(deletePost(postId)),
+        onPress: () => console.log("Yes Pressed"),
         style: "destructive",
       },
     ]);
 
   return (
     <View>
-      <Text style={s.postName}>postName</Text>
-      <Text style={s.postText}> Post text</Text>
+      <Text style={s.postName}>{postData.title}</Text>
+      <Text style={s.postText}>{postData.body}</Text>
       <TouchableOpacity
         activeOpacity={0.8}
         style={s.postDeleteButton}

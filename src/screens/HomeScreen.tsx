@@ -7,37 +7,45 @@ import names from "../navigation/names";
 
 import { newsSlice } from "../store/reducers/newsSlice";
 import { API_POSTS } from "../config";
+import { IPost } from "../types";
 
 export const HomeScreen = ({ navigation }: any) => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const { getPosts } = newsSlice.actions;
+  const [allPosts, setAllPosts] = useState<IPost[]>([]);
+  const storagePosts = useAppSelector((state) => state.newsReducer.allPosts);
+  const { setPosts } = newsSlice.actions;
   const dispatch = useAppDispatch();
-  const allPosts = useAppSelector((state) => state.newsReducer.allPosts);
-
+  console.log("new!!!!!!!!!");
   useEffect(() => {
-    if (loading) {
+    if (storagePosts.length < 10) {
       fetch(API_POSTS)
         .then((response) => response.json())
-        .then((data) => dispatch(getPosts(data)));
-      setLoading(false);
+        .then((data) => {
+          const mappedData = data.map((post: IPost) => {
+            return { ...post, ...{ views: 0, comments: [] } };
+          });
+          setAllPosts(mappedData);
+          dispatch(setPosts(mappedData));
+        });
+      console.log("fetch");
+    } else {
+      setAllPosts(storagePosts);
     }
-  }, [loading]);
-  /*
-  const onOpen = (post) => {
-    navigation.navigate(names.Post, {
-      postId: post.id,
-    });
-  };
+  }, []);
+
+  console.log(storagePosts);
 
   if (allPosts.length < 1) return null;
 
-  const mappedPosts = allPosts.map((item) => (
-    <Post key={item.id} post={item} onOpen={onOpen} />
+  const onOpen = (postData: IPost): void => {
+    navigation.navigate(names.Post, {
+      postTitle: postData.title,
+      postData: postData,
+    });
+  };
+
+  const mappedPosts = allPosts.map((post) => (
+    <Post key={post.id} postData={post} onOpen={onOpen} />
   ));
-*/
-  return (
-    <ScrollView style={s.wrapper}>
-      <Text style={s.postName}>HomeScreen</Text>
-    </ScrollView>
-  );
+
+  return <ScrollView style={s.wrapper}>{mappedPosts}</ScrollView>;
 };

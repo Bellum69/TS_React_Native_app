@@ -16,7 +16,7 @@ export const UserStack = () => {
       initialRouteName={names.User}
       screenOptions={{
         headerStyle: {
-          backgroundColor: "orange",
+          backgroundColor: "darkblue",
         },
         headerTintColor: "#fff",
       }}

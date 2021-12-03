@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { INewsState } from "../../types";
+import { INewsState, IPost } from "../../types";
 const setData = async (value: any, key: string) => {
   try {
     await AsyncStorage.setItem(key, JSON.stringify(value));
@@ -9,9 +9,9 @@ const setData = async (value: any, key: string) => {
   }
 };
 
-const getData = async (key: string) => {
+const getData = async (): Promise<IPost | undefined> => {
   try {
-    const jsonValue = await AsyncStorage.getItem(key);
+    const jsonValue = await AsyncStorage.getItem("allPosts");
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     // error reading value
@@ -19,7 +19,7 @@ const getData = async (key: string) => {
 };
 
 const initialState: INewsState = {
-  allPosts: [],
+  allPosts: getData() || [],
   allComments: [],
   allUsers: [],
 };
@@ -28,10 +28,11 @@ export const newsSlice = createSlice({
   name: "main",
   initialState,
   reducers: {
-    getPosts(state, action) {
+    setPosts(state, action) {
       state.allPosts = action.payload;
       setData(action.payload, "allPosts");
     },
+    /*
     deletePost(state, action) {
       state.allPosts = state.allPosts.filter(
         (post) => post.id !== action.payload
@@ -42,6 +43,7 @@ export const newsSlice = createSlice({
       state.allPosts.push(action.payload);
       setData(state.allPosts, "allPosts");
     },
+        */
   },
 });
 
