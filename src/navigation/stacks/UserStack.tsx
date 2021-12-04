@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 //
-import { UserScreen, PostScreen } from "../../screens/";
+import { UserScreen, PostScreen } from "../../screens";
 //
 import { DrawerButton } from "../../components";
 import { DrawerActions } from "@react-navigation/native";

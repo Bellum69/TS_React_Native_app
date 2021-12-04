@@ -1,9 +1,31 @@
-import React from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, TouchableOpacity, Alert, ScrollView } from "react-native";
+import { API_COMMENTS } from "../config";
+import { useAppSelector, useAppDispatch } from "../hooks/redux";
+import { newsSlice, selectAllComments } from "../store/reducers/newsSlice";
 import { s } from "../styles";
+import { Comment } from "../components";
+import { IComment, IPostWithCustomData } from "../types";
 
-export const PostScreen = ({ route }) => {
+export const PostScreen = ({ route }: any) => {
   const { postData } = route.params;
+  const storageComments = useAppSelector(selectAllComments);
+  const { setComments } = newsSlice.actions;
+  const dispatch = useAppDispatch();
+
+  const { comments } = postData;
+
+  useEffect(() => {
+    if (storageComments?.length > 1) {
+      return;
+    }
+    fetch(API_COMMENTS)
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(setComments(data));
+      });
+    console.log("fetch");
+  }, []);
 
   const onDeletePost = () =>
     Alert.alert("Delete post alert", "Are you sure?", [
@@ -19,10 +41,18 @@ export const PostScreen = ({ route }) => {
       },
     ]);
 
+  const mappedComments = comments.map((comment: IComment) => (
+    <Comment key={comment.id} commentData={comment} />
+  ));
+
   return (
-    <View>
-      <Text style={s.postName}>{postData.title}</Text>
-      <Text style={s.postText}>{postData.body}</Text>
+    <ScrollView>
+      <Text style={s.postTitle}>{postData.title}</Text>
+      <View style={s.postTextWrap}>
+        <Text style={s.postText}>{postData.body}</Text>
+      </View>
+      <View style={s.commentsWrap}>{mappedComments}</View>
+
       <TouchableOpacity
         activeOpacity={0.8}
         style={s.postDeleteButton}
@@ -30,6 +60,6 @@ export const PostScreen = ({ route }) => {
       >
         <Text style={s.postTextDeleteButton}>Delete post?</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };

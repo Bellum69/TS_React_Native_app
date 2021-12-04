@@ -1,15 +1,18 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { useAppSelector } from "../hooks/redux";
-
 import { s } from "../styles";
-import { IPost, IPostProps } from "../types";
+import { IPostWithCustomData } from "../types";
 
-export const Post = ({ postData, onOpen }: IPostProps) => {
+interface IPostProps {
+  postData: IPostWithCustomData;
+  onOpen: (postData: IPostWithCustomData) => void;
+}
+
+export const Post: React.FC<IPostProps> = ({ postData, onOpen }) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={() => onOpen(postData)}>
       <View style={s.post}>
-        <Text style={s.postName}>{`${postData.id} - ${postData.body}`}</Text>
+        <Text style={s.postName}>{`${postData.id} - ${postData.title}`}</Text>
       </View>
     </TouchableOpacity>
   );

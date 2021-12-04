@@ -9,18 +9,18 @@ import {
   REGISTER,
 } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import newsReducer from "./reducers/newsSlice";
-import userReducer from "./reducers/userSlice";
+import news from "./reducers/newsSlice";
+import user from "./reducers/userSlice";
 
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  whitelist: ["newsReducer"],
+  whitelist: ["news"],
 };
 
 const rootReducer = combineReducers({
-  newsReducer,
-  userReducer,
+  news,
+  user,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

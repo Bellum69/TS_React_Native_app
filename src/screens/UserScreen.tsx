@@ -1,39 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { ScrollView } from "react-native";
+import React from "react";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { s } from "../styles";
-import { Post } from "../components/";
-import names from "../navigation/names";
 
-import { newsSlice } from "../store/reducers/newsSlice";
-import { API_POSTS } from "../config";
+export const UserScreen = ({ route }: any) => {
+  const { postData } = route.params;
 
-export const UserScreen = ({ navigation }: any) => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const { getPosts } = newsSlice.actions;
-  const dispatch = useAppDispatch();
-  const allPosts = useAppSelector((state) => state.newsReducer.allPosts);
+  const onDeletePost = () =>
+    Alert.alert("Delete post alert", "Are you sure?", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      {
+        text: "YES",
+        onPress: () => console.log("Yes Pressed"),
+        style: "destructive",
+      },
+    ]);
 
-  useEffect(() => {
-    if (loading) {
-      fetch(API_POSTS)
-        .then((response) => response.json())
-        .then((data) => dispatch(getPosts(data)));
-      setLoading(false);
-    }
-  }, [loading]);
-  /*
-  const onOpen = (post) => {
-    navigation.navigate(names.Post, {
-      postId: post.id,
-    });
-  };
-
-  if (allPosts.length < 1) return null;
-
-  const mappedPosts = allPosts.map((item) => (
-    <Post key={item.id} post={item} onOpen={onOpen} />
-  ));
-*/
-  return <ScrollView style={s.wrapper}>HomeScreen</ScrollView>;
+  return (
+    <View>
+      <Text style={s.postName}>{postData.title}</Text>
+      <Text style={s.postText}>{postData.body}</Text>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={s.postDeleteButton}
+        onPress={onDeletePost}
+      >
+        <Text style={s.postTextDeleteButton}>Delete post?</Text>
+      </TouchableOpacity>
+    </View>
+  );
 };
