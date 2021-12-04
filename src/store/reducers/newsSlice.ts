@@ -1,21 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
-import { INewsState, IPostWithCustomData, IUserWithCustomData } from "../../types";
+import { INewsState, IPost, IPostWithCustomData, IUserWithCustomData } from "../../types";
 import { RootState } from "../index";
 
 const selectAllPosts = (state: RootState) => state.news.allPosts;
 
 export const selectAllComments = (state: RootState) => state.news.allComments;
 
-const selectAllUsers = (state: RootState) => state.news.allUsers;
+export const selectAllUsers = (state: RootState) => state.news.allUsers;
+
 
 
 export const reselectPosts = createSelector(
   selectAllPosts,
   selectAllComments,
-  (postList, commentsList): IPostWithCustomData[] => postList.map((post):IPostWithCustomData => {
+  (postList, commentsList, ): IPostWithCustomData[] => postList.map((post):IPostWithCustomData => {
     const postComments = commentsList.filter(comment => comment.postId === post.id)
-    return {...post, comments: postComments, views: 0,}
+
+    return {...post, comments: postComments}
   }
   ))
 
@@ -39,7 +41,9 @@ export const newsSlice = createSlice({
   initialState,
   reducers: {
     setPosts(state, action) {
-      state.allPosts = action.payload;
+      state.allPosts = action.payload.map((post: IPost): IPost => {
+        return { ...post, views: 0}
+      });
     },
     setComments(state, action) {
       state.allComments = action.payload;
@@ -54,6 +58,14 @@ export const newsSlice = createSlice({
       state.allPosts = state.allPosts.filter(
         (post) => post.id !== action.payload
       );
+    },
+    onPlusView(state, action) {
+      const itemIndex = state.allPosts.findIndex(
+        (item) => item.id === action.payload
+      );
+        console.log(itemIndex);
+        
+      state.allPosts[itemIndex].views = state.allPosts[itemIndex].views + 1;
     },   
   },
 });

@@ -13,33 +13,35 @@ export interface IPost {
   id: number;
   title: string;
   body: string;
+  date?: Date;
+  views: number;
 }
 
 export interface IPostWithCustomData extends IPost {
-  views: number;
-  date?: Date;
   comments: IComment[];
 }
 
-export interface IUserApi {
+export interface IUser {
   id: number;
   name: string;
   username: string;
   email: string;
 }
 
-export interface IUserWithCustomData extends IUserApi {
+export interface IUserWithCustomData extends IUser {
   createdPosts: IPost[];
   createdComments: IComment[];
 }
 
+
+
 export interface INewsState {
   allPosts: IPost[];
   allComments: IComment[];
-  allUsers: IUserApi[];
+  allUsers: IUser[];
 }
 
 export interface IUserState {
-  user: IUserApi | null;
+  user: IUser | null;
   isAdmin: boolean;
 }

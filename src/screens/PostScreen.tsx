@@ -5,17 +5,19 @@ import { useAppSelector, useAppDispatch } from "../hooks/redux";
 import { newsSlice, selectAllComments } from "../store/reducers/newsSlice";
 import { s } from "../styles";
 import { Comment } from "../components";
-import { IComment, IPostWithCustomData } from "../types";
+import { IComment } from "../types";
 
 export const PostScreen = ({ route }: any) => {
   const { postData } = route.params;
   const storageComments = useAppSelector(selectAllComments);
-  const { setComments } = newsSlice.actions;
+  const { setComments, onPlusView, deletePost } = newsSlice.actions;
   const dispatch = useAppDispatch();
 
-  const { comments } = postData;
+  const { comments, views } = postData;
 
   useEffect(() => {
+    dispatch(onPlusView(postData.id));
+
     if (storageComments?.length > 1) {
       return;
     }
@@ -36,7 +38,7 @@ export const PostScreen = ({ route }: any) => {
       },
       {
         text: "YES",
-        onPress: () => console.log("Yes Pressed"),
+        onPress: () => dispatch(deletePost(postData.id)),
         style: "destructive",
       },
     ]);
@@ -48,6 +50,7 @@ export const PostScreen = ({ route }: any) => {
   return (
     <ScrollView>
       <Text style={s.postTitle}>{postData.title}</Text>
+      <Text style={s.postViewed}>Post viewed:{views}</Text>
       <View style={s.postTextWrap}>
         <Text style={s.postText}>{postData.body}</Text>
       </View>

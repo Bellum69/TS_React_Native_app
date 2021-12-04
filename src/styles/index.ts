@@ -24,11 +24,16 @@ export const s = StyleSheet.create({
     marginLeft: 5,
   },
   postTitle: {
-    fontSize: 40,
+    fontSize: 30,
     alignSelf: 'center'
   },
+  postViewed: {
+    fontSize: 10,
+    alignSelf: 'flex-end',
+    color: "gray",
+    marginRight: 5
+  },
   postTextWrap: {
-    marginTop: 10,
     borderTopWidth:  3,
     borderTopColor: 'black',
     paddingBottom: 10,

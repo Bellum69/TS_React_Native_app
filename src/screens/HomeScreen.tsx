@@ -14,6 +14,9 @@ export const HomeScreen = ({ navigation }: any) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    if (storagePosts.length > 1) {
+      return;
+    }
     fetch(API_POSTS)
       .then((response) => response.json())
       .then((data) => {
