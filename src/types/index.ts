@@ -5,7 +5,7 @@ export interface IComment {
   email: string;
   body: string;
   userId?: number;
-  date?: Date;
+  date?: string; // I used moment.js lib
 }
 
 export interface IPost {
@@ -13,7 +13,7 @@ export interface IPost {
   id: number;
   title: string;
   body: string;
-  date?: Date;
+  date?: string; // I used moment.js lib
   views: number;
 }
 

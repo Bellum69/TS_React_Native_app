@@ -45,16 +45,6 @@ export const s = StyleSheet.create({
     marginLeft: 10,
     fontSize: 20,
   },
-
-  inputs: {
-    backgroundColor: "white",
-    borderBottomWidth: 1,
-    borderColor: "black",
-    padding: 10,
-    marginBottom: 20,
-    width: "90%",
-    alignSelf: "center",
-  },
   commentsWrap: {
     borderBottomWidth:  3,
     borderBottomColor: 'black',
@@ -84,6 +74,7 @@ export const s = StyleSheet.create({
   postButtonText: {
     color: "white",
     fontSize: 30,
+    alignSelf: 'center'
   },
   postChangeButton: {
     backgroundColor: "darkblue",
@@ -114,4 +105,45 @@ export const s = StyleSheet.create({
     marginLeft: 5,
     color: "white"
   },
+  createTitle: {
+    color: "black",
+    fontSize: 20,
+    paddingLeft: 10,
+    alignSelf: "center"
+  },
+  picker: {
+    backgroundColor: "white",
+    borderBottomWidth: 1,
+    borderColor: "black",
+    padding: 10,
+    marginBottom: 20,
+    width: "90%",
+    alignSelf: "center",
+  },
+  
+  inputs: {
+    backgroundColor: "white",
+    padding: 10,
+    marginBottom: 20,
+    width: "90%",
+    alignSelf: "center",
+  },
+  CreateButton: {
+    width: "98%",
+    height: 50,
+    marginTop: 10,
+    backgroundColor: "forestgreen",
+    alignSelf: "center",
+    borderRadius: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+  },
+  createButtonText: {
+    color: "white",
+    fontSize: 30,
+    paddingLeft: 10,
+  },
+
 });

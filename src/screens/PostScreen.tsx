@@ -56,18 +56,23 @@ export const PostScreen = ({ route, navigation }: any) => {
       },
     ]);
 
-  const mappedComments = comments.map((comment: IComment) => (
-    <Comment key={comment.id} commentData={comment} />
-  ));
-
   return (
     <ScrollView>
       <Text style={s.postTitle}>{postData.title}</Text>
       <Text style={s.postViewed}>Post viewed:{views}</Text>
+      {postData.date ? (
+        <Text style={s.postViewed}>Post created: {postData.date}</Text>
+      ) : null}
       <View style={s.postTextWrap}>
         <Text style={s.postText}>{postData.body}</Text>
       </View>
-      <View style={s.commentsWrap}>{mappedComments}</View>
+      <View style={s.commentsWrap}>
+        {comments
+          ? comments.map((comment: IComment) => (
+              <Comment key={comment.id} commentData={comment} />
+            ))
+          : null}
+      </View>
 
       <View style={s.postButtonsWrap}>
         <TouchableOpacity

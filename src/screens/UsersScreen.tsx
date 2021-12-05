@@ -25,8 +25,6 @@ export const UsersScreen = ({ navigation }: any) => {
       });
   }, []);
 
-  console.log(storageUsers);
-
   if (storageUsers.length < 1) return null;
 
   const onOpen = (userData: IUserWithCustomData): void => {

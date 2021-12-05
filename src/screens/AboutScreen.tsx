@@ -6,7 +6,14 @@ import { s } from "../styles";
 export const AboutScreen = () => {
   return (
     <ScrollView style={s.wrapper}>
-      <Text style={s.postText}>AboutScreen</Text>
+      <Text style={s.postTitle}>
+        Used Technologies{"\n"}
+        React-Native{"\n"}
+        TypeScript{"\n"}
+        Redux: Toolkit/Persist/Reselect{"\n"}
+        Creator Edward Bellum{"\n"}
+        GitHub: Bellum69
+      </Text>
     </ScrollView>
   );
 };

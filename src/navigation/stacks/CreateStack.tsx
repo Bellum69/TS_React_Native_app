@@ -7,6 +7,7 @@ import { DrawerButton } from "../../components";
 import { DrawerActions } from "@react-navigation/native";
 //
 import names from "../names";
+import { PostScreen } from "../../screens";
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,14 @@ export const CreateStack = () => {
               onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
             />
           ),
+        })}
+      />
+      <Stack.Screen
+        name={names.Post}
+        component={PostScreen}
+        options={({ route }) => ({
+          title: route.params.postTitle,
+          headerTitleAlign: "center",
         })}
       />
     </Stack.Navigator>

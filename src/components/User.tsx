@@ -13,12 +13,8 @@ export const User: React.FC<IUserProps> = ({ userData, onOpen }) => {
     <TouchableOpacity activeOpacity={0.7} onPress={() => onOpen(userData)}>
       <View style={s.user}>
         <Text style={s.userText}>
-          {userData.id} - {userData.name}
-        </Text>
-        <Text style={s.userText}>
-          Posts Created: {userData.createdPosts.length}
-        </Text>
-        <Text style={s.userText}>
+          {userData.id} - {userData.name} {"\n"}
+          Posts Created: {userData.createdPosts.length} {"\n"}
           Comments: {userData.createdComments.length}
         </Text>
       </View>
