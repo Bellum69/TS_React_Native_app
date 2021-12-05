@@ -4,6 +4,6 @@ export default {
   Create: "Create Post",
   AboutApp: "About App",
   Auth: "Authorize",
-  Admin: "Admin",
-  User: "User",
+  Users: "Users",
+  User: "User Posts",
 };

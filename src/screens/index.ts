@@ -3,6 +3,6 @@ import { AboutScreen } from "./AboutScreen";
 import { HomeScreen } from "./HomeScreen";
 import { PostScreen } from "./PostScreen";
 import { UsersScreen } from "./UsersScreen";
-import { UserScreen } from "./UserScreen";
+import { UserPostsScreen } from "./UserPostsScreen";
 
-export { AuthorizeScreen, AboutScreen, HomeScreen, PostScreen, UsersScreen, UserScreen };
+export { AuthorizeScreen, AboutScreen, HomeScreen, PostScreen, UsersScreen, UserPostsScreen };

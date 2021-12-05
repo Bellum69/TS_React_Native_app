@@ -63,7 +63,6 @@ export const newsSlice = createSlice({
       const itemIndex = state.allPosts.findIndex(
         (item) => item.id === action.payload
       );
-        console.log(itemIndex);
         
       state.allPosts[itemIndex].views = state.allPosts[itemIndex].views + 1;
     },   

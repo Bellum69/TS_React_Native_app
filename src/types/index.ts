@@ -33,8 +33,6 @@ export interface IUserWithCustomData extends IUser {
   createdComments: IComment[];
 }
 
-
-
 export interface INewsState {
   allPosts: IPost[];
   allComments: IComment[];

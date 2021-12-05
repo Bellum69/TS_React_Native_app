@@ -45,18 +45,7 @@ export const s = StyleSheet.create({
     marginLeft: 10,
     fontSize: 20,
   },
-  postDeleteButton: {
-    marginTop: 10,
-    backgroundColor: "red",
-    width: "100%",
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  postTextDeleteButton: {
-    color: "white",
-    fontSize: 30,
-  },
+
   inputs: {
     backgroundColor: "white",
     borderBottomWidth: 1,
@@ -86,5 +75,43 @@ export const s = StyleSheet.create({
     fontSize: 15,
     backgroundColor: 'deepskyblue',
   },
-
+  postButtonsWrap: {
+    width: "100%",
+    height: 50,
+    marginTop: 10,
+    flexDirection: 'row'
+  },
+  postButtonText: {
+    color: "white",
+    fontSize: 30,
+  },
+  postChangeButton: {
+    backgroundColor: "darkblue",
+    width: '50%',
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: '100%',
+  },
+  postDeleteButton: {
+    backgroundColor: "red",
+    width: '50%',
+    alignSelf: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: '100%',
+  },
+  user: {
+    marginBottom: 10,
+    alignSelf: "center",
+    overflow: "hidden",
+    width: "98%",
+    borderRadius: 5,
+    backgroundColor: "cornflowerblue",
+  },
+  userText: {
+    fontSize: 20,
+    marginLeft: 5,
+    color: "white"
+  },
 });

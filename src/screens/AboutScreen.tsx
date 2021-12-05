@@ -6,7 +6,7 @@ import { s } from "../styles";
 export const AboutScreen = () => {
   return (
     <ScrollView style={s.wrapper}>
-      <Text>AboutScreen</Text>
+      <Text style={s.postText}>AboutScreen</Text>
     </ScrollView>
   );
 };

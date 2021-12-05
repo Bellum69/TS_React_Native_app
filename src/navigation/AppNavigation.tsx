@@ -43,7 +43,7 @@ export const AppNavigation = () => {
       drawerContent={(props) => <DrawerMain {...props} />}
     >
       <Drawer.Screen
-        name={names.User}
+        name={names.Users}
         component={UserStack}
         options={{
           drawerIcon: ({ focused }) => (

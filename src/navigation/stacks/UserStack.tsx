@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 //
-import { UserScreen, PostScreen } from "../../screens";
+import { UsersScreen, PostScreen, UserPostsScreen } from "../../screens";
 //
 import { DrawerButton } from "../../components";
 import { DrawerActions } from "@react-navigation/native";
@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 export const UserStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName={names.User}
+      initialRouteName={names.Users}
       screenOptions={{
         headerStyle: {
           backgroundColor: "darkblue",
@@ -22,9 +22,22 @@ export const UserStack = () => {
       }}
     >
       <Stack.Screen
-        name={names.User}
-        component={UserScreen}
+        name={names.Users}
+        component={UsersScreen}
         options={({ navigation }) => ({
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <DrawerButton
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+            />
+          ),
+        })}
+      />
+      <Stack.Screen
+        name={names.User}
+        component={UserPostsScreen}
+        options={({ route, navigation }) => ({
+          title: route.params.userName,
           headerTitleAlign: "center",
           headerLeft: () => (
             <DrawerButton
@@ -37,7 +50,7 @@ export const UserStack = () => {
         name={names.Post}
         component={PostScreen}
         options={({ route }) => ({
-          title: route.params.postId,
+          title: route.params.postTitle,
           headerTitleAlign: "center",
         })}
       />
