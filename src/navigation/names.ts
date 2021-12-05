@@ -6,4 +6,6 @@ export default {
   AddComment: "Add comment",
   Users: "Users",
   User: "User Posts",
+  ChangeComment: "Change comment",
+  ChangePost: "Change post",
 };

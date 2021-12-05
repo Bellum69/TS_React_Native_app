@@ -6,6 +6,7 @@ import {
   PostScreen,
   UserPostsScreen,
   AddCommentScreen,
+  ChangePostScreen,
 } from "../../screens";
 //
 import { DrawerButton } from "../../components";
@@ -62,6 +63,13 @@ export const UserStack = () => {
       <Stack.Screen
         name={names.AddComment}
         component={AddCommentScreen}
+        options={{
+          headerTitleAlign: "center",
+        }}
+      />
+      <Stack.Screen
+        name={names.ChangePost}
+        component={ChangePostScreen}
         options={{
           headerTitleAlign: "center",
         }}

@@ -11,6 +11,7 @@ import { IComment } from "../types";
 import { s } from "../styles";
 import { Comment } from "../components";
 import names from "../navigation/names";
+import moment from "moment";
 
 export const PostScreen = ({ route, navigation }: any) => {
   const { postData } = route.params;
@@ -44,7 +45,9 @@ export const PostScreen = ({ route, navigation }: any) => {
   };
 
   const onChangePost = () => {
-    navigation.goBack();
+    navigation.navigate(names.ChangePost, {
+      postData: postData,
+    });
   };
   const onAddComment = () => {
     navigation.navigate(names.AddComment, {
@@ -72,7 +75,9 @@ export const PostScreen = ({ route, navigation }: any) => {
         <Text style={s.postTitle}>{postData.title}</Text>
         <Text style={s.postViewed}>Post viewed:{views}</Text>
         {postData.date ? (
-          <Text style={s.postViewed}>Post created: {postData.date}</Text>
+          <Text style={s.postViewed}>
+            Post created: {moment(postData.date).format("MMM Do YY")}
+          </Text>
         ) : null}
         <View style={s.postTextWrap}>
           <Text style={s.postText}>{postData.body}</Text>

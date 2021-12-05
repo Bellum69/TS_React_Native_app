@@ -6,9 +6,7 @@ import { useAppSelector, useAppDispatch } from "../hooks/redux";
 import { newsSlice, reselectUsers } from "../store/reducers/newsSlice";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import moment from "moment";
 import { IComment } from "../types";
-import names from "../navigation/names";
 
 export const AddCommentScreen = ({ navigation, route }: any) => {
   const { postData } = route.params;
@@ -34,14 +32,12 @@ export const AddCommentScreen = ({ navigation, route }: any) => {
       email: storageUsers[indexUser].email,
       body: inputs.body,
       userId: selectedUser,
-      date: moment(new Date()).format("MMM Do YY"),
+      date: new Date(),
     };
 
     dispatch(addComment(newCommentData));
 
-    navigation.navigate(names.Post, {
-      postTitle: postData.title,
-    });
+    navigation.goBack();
     setInputs({
       name: "",
       body: "",
@@ -50,7 +46,7 @@ export const AddCommentScreen = ({ navigation, route }: any) => {
 
   return (
     <View>
-      <Text style={s.createTitle}>Choose user and create new post</Text>
+      <Text style={s.createTitle}>Choose user for add new comment</Text>
       <Picker
         selectedValue={selectedUser}
         onValueChange={(itemValue) => setSelectedUser(itemValue)}

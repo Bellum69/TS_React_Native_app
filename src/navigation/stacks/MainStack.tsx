@@ -2,7 +2,12 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { DrawerActions } from "@react-navigation/native";
 //
-import { AddCommentScreen, HomeScreen, PostScreen } from "../../screens";
+import {
+  AddCommentScreen,
+  ChangePostScreen,
+  HomeScreen,
+  PostScreen,
+} from "../../screens";
 //
 import { DrawerButton } from "../../components";
 //
@@ -44,6 +49,13 @@ export const MainStack = () => {
       <Stack.Screen
         name={names.AddComment}
         component={AddCommentScreen}
+        options={{
+          headerTitleAlign: "center",
+        }}
+      />
+      <Stack.Screen
+        name={names.ChangePost}
+        component={ChangePostScreen}
         options={{
           headerTitleAlign: "center",
         }}

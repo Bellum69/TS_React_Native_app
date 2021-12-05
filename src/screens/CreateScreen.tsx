@@ -7,7 +7,6 @@ import { useAppSelector, useAppDispatch } from "../hooks/redux";
 import { newsSlice, reselectUsers } from "../store/reducers/newsSlice";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import moment from "moment";
 import { IPost } from "../types";
 import names from "../navigation/names";
 
@@ -34,7 +33,7 @@ export const CreateScreen = ({ navigation }: any) => {
     body: "",
   });
 
-  const onOpen = (PostData: IPost): void => {
+  const onSubmit = (PostData: IPost): void => {
     navigation.navigate(names.Post, {
       postTitle: PostData.title,
       postData: PostData,
@@ -47,7 +46,7 @@ export const CreateScreen = ({ navigation }: any) => {
       id: Date.now(),
       title: inputs.title,
       body: inputs.body,
-      date: moment(new Date()).format("MMM Do YY"),
+      date: new Date(),
       views: 0,
     };
     dispatch(addPost(newPostData));
@@ -55,7 +54,7 @@ export const CreateScreen = ({ navigation }: any) => {
       title: "",
       body: "",
     });
-    onOpen(newPostData);
+    onSubmit(newPostData);
   };
 
   return (

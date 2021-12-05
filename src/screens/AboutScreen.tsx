@@ -7,11 +7,12 @@ export const AboutScreen = () => {
   return (
     <ScrollView style={s.wrapper}>
       <Text style={s.postTitle}>
-        Used Technologies{"\n"}
+        Technologies Stack:{"\n"}
         React-Native{"\n"}
         TypeScript{"\n"}
         Redux: Toolkit/Persist/Reselect{"\n"}
-        Creator Edward Bellum{"\n"}
+        {"\n"}
+        Creator - Edward Bellum{"\n"}
         GitHub: Bellum69
       </Text>
     </ScrollView>

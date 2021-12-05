@@ -4,5 +4,6 @@ import { PostScreen } from "./PostScreen";
 import { UsersScreen } from "./UsersScreen";
 import { UserPostsScreen } from "./UserPostsScreen";
 import { AddCommentScreen } from "./AddCommentScreen";
+import { ChangePostScreen } from "./ChangePostScreen";
 
-export {  AboutScreen, HomeScreen, PostScreen, UsersScreen, UserPostsScreen, AddCommentScreen };
+export {  AboutScreen, HomeScreen, PostScreen, UsersScreen, UserPostsScreen, AddCommentScreen, ChangePostScreen };

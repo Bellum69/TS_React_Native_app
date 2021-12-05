@@ -61,13 +61,28 @@ export const newsSlice = createSlice({
       state.allPosts = state.allPosts.filter(
         (post) => post.id !== action.payload
       );
+      state.allComments = state.allComments.filter(
+        (comment) => comment.postId !== action.payload
+      );
     },
     onPlusView(state, action) {
-      const itemIndex = state.allPosts.findIndex(
-        (item) => item.id === action.payload
+      const postIndex = state.allPosts.findIndex(
+        (post) => post.id === action.payload
       );
-      state.allPosts[itemIndex].views = state.allPosts[itemIndex].views + 1;
-    },   
+      state.allPosts[postIndex].views = state.allPosts[postIndex].views + 1;
+    },
+    changePost(state, action) {
+      const postIndex = state.allPosts.findIndex(
+        (post) => post.id === action.payload.id
+      );
+      state.allPosts[postIndex] = {...state.allPosts[postIndex], title:action.payload.title, body: action.payload.body};
+    },
+    changeComment(state, action) {
+      const commentIndex = state.allComments.findIndex(
+        (comment) => comment.id === action.payload.id
+      );
+      state.allComments[commentIndex] = {...state.allComments[commentIndex], name:action.payload.name, body: action.payload.body};
+    },
   },
 });
 

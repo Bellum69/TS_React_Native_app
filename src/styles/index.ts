@@ -75,7 +75,6 @@ export const s = StyleSheet.create({
     bottom: 0,
     width: "100%",
     flexDirection: 'row',
-    
   },
   postButtonText: {
     color: "white",
@@ -129,9 +128,17 @@ export const s = StyleSheet.create({
     backgroundColor: "white",
     borderBottomWidth: 1,
     borderColor: "black",
-    padding: 10,
     marginBottom: 20,
     width: "90%",
+    alignSelf: "center",
+  },
+  pickerHome: {
+    backgroundColor: "white",
+    borderBottomWidth: 1,
+    borderColor: "black",
+    marginTop: 5,
+    marginBottom: 5,
+    width: "100%",
     alignSelf: "center",
   },
   inputs: {
