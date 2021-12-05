@@ -1,7 +1,12 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 //
-import { UsersScreen, PostScreen, UserPostsScreen } from "../../screens";
+import {
+  UsersScreen,
+  PostScreen,
+  UserPostsScreen,
+  AddCommentScreen,
+} from "../../screens";
 //
 import { DrawerButton } from "../../components";
 import { DrawerActions } from "@react-navigation/native";
@@ -53,6 +58,13 @@ export const UserStack = () => {
           title: route.params.postTitle,
           headerTitleAlign: "center",
         })}
+      />
+      <Stack.Screen
+        name={names.AddComment}
+        component={AddCommentScreen}
+        options={{
+          headerTitleAlign: "center",
+        }}
       />
     </Stack.Navigator>
   );

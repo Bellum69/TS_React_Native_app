@@ -17,6 +17,9 @@ export const Comment: React.FC<ICommentProps> = ({ commentData }) => {
       <View style={s.comment}>
         <Text style={s.commentTitle}>
           {commentData.id} - {commentData.name}
+          {commentData.userId && commentData.date
+            ? `${"\n"}User - ${commentData.userId} - ${commentData.date}`
+            : null}
         </Text>
         <Text style={s.commentBody}>{commentData.body}</Text>
       </View>

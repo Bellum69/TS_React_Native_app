@@ -54,6 +54,9 @@ export const newsSlice = createSlice({
     addPost(state, action) {
       state.allPosts.push(action.payload);
     },
+    addComment(state, action) {
+      state.allComments.push(action.payload);
+    },
     deletePost(state, action) {
       state.allPosts = state.allPosts.filter(
         (post) => post.id !== action.payload
@@ -63,7 +66,6 @@ export const newsSlice = createSlice({
       const itemIndex = state.allPosts.findIndex(
         (item) => item.id === action.payload
       );
-        
       state.allPosts[itemIndex].views = state.allPosts[itemIndex].views + 1;
     },   
   },

@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
+export const { width, height } = Dimensions.get("screen");
 
 export const s = StyleSheet.create({
   center: {
@@ -7,8 +9,7 @@ export const s = StyleSheet.create({
     alignItems: "center",
   },
   wrapper: {
-    height: "100%",
-    paddingBottom: 0,
+    flex: 1,
   },
   post: {
     marginBottom: 10,
@@ -66,31 +67,44 @@ export const s = StyleSheet.create({
     backgroundColor: 'deepskyblue',
   },
   postButtonsWrap: {
-    width: "100%",
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
     height: 50,
-    marginTop: 10,
-    flexDirection: 'row'
+    bottom: 0,
+    width: "100%",
+    flexDirection: 'row',
+    
   },
   postButtonText: {
     color: "white",
-    fontSize: 30,
-    alignSelf: 'center'
+    fontSize: 20,
+    alignSelf: 'center',
   },
   postChangeButton: {
+    flex: 1,
     backgroundColor: "darkblue",
-    width: '50%',
-    alignSelf: 'flex-start',
     flexDirection: 'row',
     alignItems: 'center',
     height: '100%',
+    justifyContent: "center"
   },
   postDeleteButton: {
+    flex: 1,
     backgroundColor: "red",
-    width: '50%',
-    alignSelf: 'flex-end',
     flexDirection: 'row',
     alignItems: 'center',
     height: '100%',
+    justifyContent: "center"
+  },
+  postAddCommentButton: {
+    flex: 1,
+    backgroundColor: "green",
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: '100%',
+    justifyContent: "center"
   },
   user: {
     marginBottom: 10,
@@ -120,7 +134,6 @@ export const s = StyleSheet.create({
     width: "90%",
     alignSelf: "center",
   },
-  
   inputs: {
     backgroundColor: "white",
     padding: 10,

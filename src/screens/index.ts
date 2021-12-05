@@ -1,8 +1,8 @@
-import { AuthorizeScreen } from "./AuthorizeScreen";
 import { AboutScreen } from "./AboutScreen";
 import { HomeScreen } from "./HomeScreen";
 import { PostScreen } from "./PostScreen";
 import { UsersScreen } from "./UsersScreen";
 import { UserPostsScreen } from "./UserPostsScreen";
+import { AddCommentScreen } from "./AddCommentScreen";
 
-export { AuthorizeScreen, AboutScreen, HomeScreen, PostScreen, UsersScreen, UserPostsScreen };
+export {  AboutScreen, HomeScreen, PostScreen, UsersScreen, UserPostsScreen, AddCommentScreen };

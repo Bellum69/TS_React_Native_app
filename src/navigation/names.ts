@@ -1,9 +1,9 @@
 export default {
-  Main: "My Blog",
+  Main: "Blog",
   Post: "Post",
   Create: "Create Post",
   AboutApp: "About App",
-  Auth: "Authorize",
+  AddComment: "Add comment",
   Users: "Users",
   User: "User Posts",
 };

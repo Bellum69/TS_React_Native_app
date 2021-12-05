@@ -1,7 +1,7 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerMain } from "../components/DrawerMain";
-import { Dimensions } from "react-native";
+
 //
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
@@ -9,22 +9,15 @@ import {
   faCode,
   faBullhorn,
   faUserAlt,
-  faKey,
 } from "@fortawesome/free-solid-svg-icons";
 //
 
 import names from "./names";
-import {
-  MainStack,
-  AboutStack,
-  CreateStack,
-  AuthorizeStack,
-  UserStack,
-} from "./stacks";
+import { MainStack, AboutStack, CreateStack, UserStack } from "./stacks";
+import { width } from "../styles";
 
 //
 
-const { width } = Dimensions.get("screen");
 const Drawer = createDrawerNavigator();
 
 export const AppNavigation = () => {
@@ -43,19 +36,6 @@ export const AppNavigation = () => {
       drawerContent={(props) => <DrawerMain {...props} />}
     >
       <Drawer.Screen
-        name={names.Users}
-        component={UserStack}
-        options={{
-          drawerIcon: ({ focused }) => (
-            <FontAwesomeIcon
-              icon={faUserAlt}
-              size={30}
-              color={focused ? "white" : "black"}
-            />
-          ),
-        }}
-      />
-      <Drawer.Screen
         name={names.Main}
         component={MainStack}
         options={{
@@ -69,18 +49,19 @@ export const AppNavigation = () => {
         }}
       />
       <Drawer.Screen
-        name={names.AboutApp}
-        component={AboutStack}
+        name={names.Users}
+        component={UserStack}
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesomeIcon
-              icon={faCode}
+              icon={faUserAlt}
               size={30}
               color={focused ? "white" : "black"}
             />
           ),
         }}
       />
+
       <Drawer.Screen
         name={names.Create}
         component={CreateStack}
@@ -95,12 +76,12 @@ export const AppNavigation = () => {
         }}
       />
       <Drawer.Screen
-        name={names.Auth}
-        component={AuthorizeStack}
+        name={names.AboutApp}
+        component={AboutStack}
         options={{
           drawerIcon: ({ focused }) => (
             <FontAwesomeIcon
-              icon={faKey}
+              icon={faCode}
               size={30}
               color={focused ? "white" : "black"}
             />
